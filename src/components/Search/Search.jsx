@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import './Search.css'
-function Search()
+import usedebounce from '../../hooks/usedebounce';
+function Search({updatesearch})
 {
+    const debouncecallback=usedebounce((e)=>updatesearch(e.target.value));
     return(
         <div className="search-wrapper">
-        <input type="text" name="" id="pokemon-name-search" placeholder="pokemon name" />
+        <input type="text" name="" id="pokemon-name-search" placeholder="pokemon name" onChange={debouncecallback} />
         </div>
     )
 

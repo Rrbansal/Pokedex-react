@@ -1,0 +1,46 @@
+/*
+function usepokemonlist()
+{
+    // const [pokemonliststate,setpokemonliststate]=useState(
+    //     {
+    //         pokemonlist:[],
+    //         isloading:true,
+    //         POKEDEX_URL:'https://pokeapi.co/api/v2/pokemon',
+    //         next_url:'',
+    //         prev_url:''
+    //     })
+
+     async function downloadpokemon()
+    {
+        // setpokemonliststate((state)=>({...state,isloading:true}))
+
+        // const response=await axios.get(pokemonliststate.POKEDEX_URL);
+        const pokemon_results=response.data.results;
+        // setpokemonliststate((state)=>({...state,next_url:response.data.next,prev_url:response.data.previous}))
+        const pokemon_result_promise=pokemon_results.map((pokemon)=>axios.get(pokemon.url))
+        const pokemondata=await axios.all(pokemon_result_promise);
+        const res=(pokemondata.map((pokedata)=>
+        {
+            const pokemon=pokedata.data;
+            return {
+                id:pokemon.id,
+                name:pokemon.name
+                ,image:(pokemon.sprites.other)?pokemon.sprites.other.dream_world.front_default:pokemon.sprites.front_shiny
+                ,types:pokemon.types}
+        }))
+        // setpokemonliststate((state)=>({...state,pokemonlist:res,isloading:false}))
+
+    }
+    // useEffect(()=>
+    // {
+    //     downloadpokemon();
+    // },[pokemonliststate.POKEDEX_URL])
+
+    return {pokemonliststate,setpokemonliststate}
+
+}
+
+
+export default usepokemonlist;
+
+*/
